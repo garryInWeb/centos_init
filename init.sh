@@ -8,8 +8,12 @@ function init_net() {
 
     sed -i 's/(BOOTPROTO=).*/\1static/' ${net}/${ens}
     sed -i 's/(ONBOOT=).*/\1yes/' ${net}/${ens}
+    sed -i 's/(ETMASK=).*//' ${net}/${ens}
+    sed -i 's/(DNS1=).*//' ${net}/${ens}
+    sed -i 's/(IPADDR=).*//' ${net}/${ens}
+    sed -i 's/(GATEWAY=).*//' ${net}/${ens}
     echo 'NETMASK=255.255.255.0' >> ${net}/${ens}
-    echo 'NSD1=114.114.114.114' >> ${net}/${ens}
+    echo 'DNS1=114.114.114.114' >> ${net}/${ens}
     read -p "IPADDR >" ipaddr
     read -p "GATEWAY >" gateway
     echo 'IPADDR='${ipaddr} >> ${net}/${ens}
